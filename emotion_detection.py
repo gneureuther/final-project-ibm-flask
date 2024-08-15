@@ -20,11 +20,21 @@ def emotion_detector(text_to_analyse):
        fear = emotions['fear']
        joy = emotions['joy']
        sadness = emotions['sadness']
-       dominant_index = max([anger, disgust, fear, joy, sadness])
-       dominant_emotion = 
-       return emotions
-       #return {"anger": anger, "disgust": disgust, "fear": fear, "joy": joy, "sadness": sadness,
-       #         "dominant_emotion:": dominant_emotion }
+       emotion_indexes = [anger, disgust, fear, joy, sadness]
+       # Find the largest emotion index       
+       dominant_index = max(emotion_indexes)
+
+       # Set the dominant emotion by looping though the dictionary of emotions 
+       dominant_emotion = ''
+       for key, value in emotions.items():
+          print(dominant_index)
+          if value == dominant_index:
+            dominant_emotion = key
+            break
+           
+       # Return the json of the emotion data
+       return {"anger": anger, "disgust": disgust, "fear": fear, "joy": joy, "sadness": sadness,
+                "dominant_emotion:": dominant_emotion }
     return None
     
         
