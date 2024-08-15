@@ -14,25 +14,25 @@ def emotion_detector(text_to_analyse):
     response = requests.post(url, json = obj_doc, headers=headers, timeout=10 )
     formatted_text = json.loads(response.text)
     if response.status_code == 200:
-       emotions = formatted_text['emotionPredictions'][0]['emotion']
-       anger = emotions['anger']
-       disgust = emotions['disgust']
-       fear = emotions['fear']
-       joy = emotions['joy']
-       sadness = emotions['sadness']
-       emotion_indexes = [anger, disgust, fear, joy, sadness]
-       # Find the largest emotion index       
-       dominant_index = max(emotion_indexes)
+        emotions = formatted_text['emotionPredictions'][0]['emotion']
+        anger = emotions['anger']
+        disgust = emotions['disgust']
+        fear = emotions['fear']
+        joy = emotions['joy']
+        sadness = emotions['sadness']
+        emotion_indexes = [anger, disgust, fear, joy, sadness]
+        # Find the largest emotion index       
+        dominant_index = max(emotion_indexes)
 
-       # Set the dominant emotion by looping though the dictionary of emotions 
-       dominant_emotion = ''
-       for key, value in emotions.items():
-          if value == dominant_index:
-            dominant_emotion = key
-            break
+        # Set the dominant emotion by looping though the dictionary of emotions 
+        dominant_emotion = ''
+        for key, value in emotions.items():
+           if value == dominant_index:
+             dominant_emotion = key
+             break
            
-       # Return the json of the emotion data
-       return {"anger": anger, "disgust": disgust, "fear": fear, "joy": joy, "sadness": sadness,
+        # Return the json of the emotion data
+        return {"anger": anger, "disgust": disgust, "fear": fear, "joy": joy, "sadness": sadness,
                 "dominant_emotion:": dominant_emotion }
     return None
     
