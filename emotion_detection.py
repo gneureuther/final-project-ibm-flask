@@ -27,7 +27,6 @@ def emotion_detector(text_to_analyse):
        # Set the dominant emotion by looping though the dictionary of emotions 
        dominant_emotion = ''
        for key, value in emotions.items():
-          print(dominant_index)
           if value == dominant_index:
             dominant_emotion = key
             break
