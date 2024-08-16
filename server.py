@@ -24,11 +24,11 @@ def emotion_analyzer():
     response = emotion_detector(text_to_analyze)
     # Build the final message to be displayed
     #message += response + dominant_str
-    message += "'anger':" + str(response['anger']) + ', '
-    message += "'disgust':" + str(response['disgust']) + ', '
-    message += "'fear':" + str(response['fear']) + ', '
-    message += "'joy':" + str(response['joy']) + ', '
-    message += "'sadness':" + str(response['sadness']) + '. '
+    message += "'anger': " + str(response['anger']) + ', '
+    message += "'disgust': " + str(response['disgust']) + ', '
+    message += "'fear': " + str(response['fear']) + ', '
+    message += "'joy': " + str(response['joy']) + ', '
+    message += "'sadness': " + str(response['sadness']) + '. '
     message += "The dominant emotion is " + response['dominant_emotion']
     return message    
 
