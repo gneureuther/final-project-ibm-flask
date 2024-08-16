@@ -11,7 +11,7 @@ HEADERS = {"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_sto
 
 def emotion_detector(text_to_analyse):
     """
-    Make a api call to analyze the text_to_analse string.
+    Make a api call to analyze the text_to_analyse string.
     """
     obj_doc = { "raw_document": { "text": text_to_analyse } }
     response = requests.post(URL, json = obj_doc, headers=HEADERS, timeout=10 )
@@ -35,5 +35,5 @@ def emotion_detector(text_to_analyse):
                 break
         # Return the json of the emotion data
         return {"anger": anger, "disgust": disgust, "fear": fear, "joy": joy, "sadness": sadness,
-                "dominant_emotion:": dominant_emotion }
+                "dominant_emotion": dominant_emotion }
     return None
