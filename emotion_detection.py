@@ -36,4 +36,4 @@ def emotion_detector(text_to_analyse):
         # Return the json of the emotion data
         return {"anger": anger, "disgust": disgust, "fear": fear, "joy": joy, "sadness": sadness,
                 "dominant_emotion": dominant_emotion }
-    return None
+    return {"message": "Error accesing Waston Service"}
