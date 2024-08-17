@@ -32,12 +32,7 @@ def emotion_detector(text_to_analyse):
         for key, value in emotions.items():
             if value == dominant_index:
                 dominant_emotion = key
-                break
-        
-        # When dominant emotion is None return an error message        
-        if not dominant_emotion:
-            return "Invalid text! Please try again!"
-        
+                break        
         # Return the json of the emotion data
         return {"anger": anger, "disgust": disgust, "fear": fear, "joy": joy, "sadness": sadness,
                 "dominant_emotion": dominant_emotion }

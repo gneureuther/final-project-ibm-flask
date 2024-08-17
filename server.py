@@ -18,12 +18,18 @@ def render_index_page():
 def emotion_analyzer():
     # Response message
     message = "For the given statement, the system response is "
+    
     # get the text entered
     text_to_analyze = request.args.get('textToAnalyze')
+    
     # Analyze the text
     response = emotion_detector(text_to_analyze)
+    
+    # When the dominant emotion is None return an error
+    if response['dominant_emotion'] is None:
+        return "Invalid text! Please try again!"
+
     # Build the final message to be displayed
-    #message += response + dominant_str
     message += "'anger': " + str(response['anger']) + ', '
     message += "'disgust': " + str(response['disgust']) + ', '
     message += "'fear': " + str(response['fear']) + ', '
