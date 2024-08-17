@@ -15,7 +15,7 @@ def emotion_detector(text_to_analyse):
     """
     obj_doc = { "raw_document": { "text": text_to_analyse } }
     response = requests.post(URL, json = obj_doc, headers=HEADERS, timeout=10 )
-    formatted_text = json.loads(response.text)
+    formatted_text = json.loads(response.text)    
     if response.status_code == 200:
         emotions = formatted_text['emotionPredictions'][0]['emotion']
         anger = emotions['anger']
@@ -28,12 +28,21 @@ def emotion_detector(text_to_analyse):
         dominant_index = max(emotion_indexes)
 
         # Set the dominant emotion by looping though the dictionary of emotions
-        dominant_emotion = ''
+        dominant_emotion = None
         for key, value in emotions.items():
             if value == dominant_index:
                 dominant_emotion = key
                 break
+        
+        # When dominant emotion is None return an error message        
+        if not dominant_emotion:
+            return "Invalid text! Please try again!"
+        
         # Return the json of the emotion data
         return {"anger": anger, "disgust": disgust, "fear": fear, "joy": joy, "sadness": sadness,
                 "dominant_emotion": dominant_emotion }
-    return {"message": "Error accesing Waston Service"}
+    
+    # When stats of 400 return a dictionary of None values.
+    if response.status_code == 400:
+         return {"anger": None, "disgust": None, "fear": None, "joy": None, "sadness": None,
+                "dominant_emotion": None }
