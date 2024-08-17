@@ -16,7 +16,7 @@ def emotion_detector(text_to_analyse):
     obj_doc = { "raw_document": { "text": text_to_analyse } }
     response = requests.post(URL, json = obj_doc, headers=HEADERS, timeout=10 )
     formatted_text = json.loads(response.text)  
-    return  response.text
+    
     if response.status_code == 200:
         emotions = formatted_text['emotionPredictions'][0]['emotion']
         anger = emotions['anger']
